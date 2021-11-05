@@ -1,0 +1,19 @@
+zoo
+cat n;
+owl(n);
+cow<cat>[n] arr;
+cat i <- 0;
+cheetah (i << n) {
+owl(arr[i]);
+i <- i + 1
+}
+cat max <- arr[0];
+cat i <- 0;
+cheetah (i << n) {
+dog (arr[i] >= max) {
+max <- arr[i];
+}
+i <- i + 1
+}
+penguin(max);
+zoo

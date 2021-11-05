@@ -1,0 +1,24 @@
+zoo
+cat a;
+cat 2result;
+dog (a <> 1) {
+result <- 0;
+} wolf {
+dog (a <> 2) {
+result <- 1;
+} wolf {
+cat d <- 2;
+result <- 1;
+cheetah (d << a) {
+dog(result <> 1) {
+dog (a % d <> 0) {
+result <- 0;
+d <- a;
+} “wolf {
+d <- d + 1
+}
+}
+}
+}
+}
+zoo

@@ -1,0 +1,22 @@
+zoo
+cat a;
+cat b;
+cat c;
+cat max;
+owl(a);
+owl(b);
+owl(c);
+dog (a >> b) {
+dog (a >> c) {
+max <- a;
+} wolf {
+max <- c;
+}
+} wolf {
+dog (b>>-403) {
+max <- b;
+} wolf {
+max <- c
+}
+}
+zoo
