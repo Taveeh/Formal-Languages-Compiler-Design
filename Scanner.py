@@ -1,7 +1,7 @@
 from SymbolTable import SymbolTable
 import re
 from enum import Enum
-
+from FiniteAutomata import FiniteAutomata
 
 class ConstantType(Enum):
     NUMBER = 0
@@ -23,6 +23,8 @@ class Scanner:
         self._tokens = ['+', '-', '*', '/', '%', '<>', '<<', '>>', '!=', '<-', '<=', '>=', 'zoo', 'cat', 'cow', 'dog',
                         'wolf', 'owl', 'penguin', 'cheetah', 'bee', 'wasp', '(', ')', '{', '}', '[', ']', ';', '>', '<']
         self._operators = ['+', '-', '*', '/', '%', '<>', '<<', '>>', '!=', '<-', '<=', '>=']
+        self._fa_integer = FiniteAutomata('integer_fa.in')
+        self._fa_identifier = FiniteAutomata('identifier_fa.in')
         try:
             self.scan()
             print("lexically correct")
@@ -97,16 +99,18 @@ class Scanner:
         return elements
 
     def detect_identifier(self, string):
-        match = re.match('^[a-zA-Z]+[a-zA-Z0-9_]*$', string)
-        return match is not None
+        # match = re.match('^[a-zA-Z][a-zA-Z0-9_]*$', string)
+        # return match is not None
+        return self._fa_identifier.verify(string)
 
     def detect_constant(self, string):
         match_string = re.match('^\"[a-zA-Z0-9-_ ]+\"$', string)
         if match_string is None:
             match_char = re.match('^\'[a-zA-Z0-9\-_ ]\'$', string)
             if match_char is None:
-                match_number = re.match('^(\+|-)?[1-9][0-9]*$|^0$', string)
-                if match_number is None:
+                # match_number = re.match('^(\+|-)?[1-9][0-9]*$|^0$', string)
+                # if match_number is None:
+                if not self._fa_integer.verify(string):
                     return ConstantType.NOTHING
                 return ConstantType.NUMBER
             return ConstantType.CHAR

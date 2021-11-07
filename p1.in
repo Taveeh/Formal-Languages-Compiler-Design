@@ -13,7 +13,7 @@ max <- a;
 max <- c;
 }
 } wolf {
-dog (b>>-403) {
+dog (b>>c) {
 max <- b;
 } wolf {
 max <- c
