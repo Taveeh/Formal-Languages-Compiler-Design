@@ -23,8 +23,10 @@ class Scanner:
         self._tokens = ['+', '-', '*', '/', '%', '<>', '<<', '>>', '!=', '<-', '<=', '>=', 'zoo', 'cat', 'cow', 'dog',
                         'wolf', 'owl', 'penguin', 'cheetah', 'bee', 'wasp', '(', ')', '{', '}', '[', ']', ';', '>', '<']
         self._operators = ['+', '-', '*', '/', '%', '<>', '<<', '>>', '!=', '<-', '<=', '>=']
+
         self._fa_integer = FiniteAutomata('integer_fa.in')
         self._fa_identifier = FiniteAutomata('identifier_fa.in')
+
         try:
             self.scan()
             print("lexically correct")

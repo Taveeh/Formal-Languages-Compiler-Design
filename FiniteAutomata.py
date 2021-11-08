@@ -7,6 +7,21 @@ class FiniteAutomata:
         self._transitions = {}
         self.parse_file(file_name)
 
+    def get_states(self):
+        return self._states
+
+    def get_alphabet(self):
+        return self._alphabet
+
+    def get_initial_state(self):
+        return self._initial
+
+    def get_final_states(self):
+        return self._final
+
+    def get_transitions(self):
+        return self._transitions
+
     def parse_file(self, file_name):
         file = open(file_name, 'r')
         states = file.readline()
@@ -63,3 +78,32 @@ class FiniteAutomata:
             else:
                 return False
         return True
+
+
+if __name__ == '__main__':
+    fa = FiniteAutomata('fa.in')
+    while True:
+        print('1. Get states')
+        print('2. Get alphabet')
+        print('3. Get initial state')
+        print('4. Get final states')
+        print('5. Get transitions')
+        print('6. Check if sequence is accepted')
+        print('0. Exit')
+        val = int(input('> '))
+        if val == 0:
+            break
+        elif val == 1:
+            print(fa.get_states())
+        elif val == 2:
+            print(fa.get_alphabet())
+        elif val == 3:
+            print(fa.get_initial_state())
+        elif val == 4:
+            print(fa.get_final_states())
+        elif val == 5:
+            print(fa.get_transitions())
+        elif val == 6:
+            print('Enter string: ')
+            string = input()
+            print(fa.verify(string))
